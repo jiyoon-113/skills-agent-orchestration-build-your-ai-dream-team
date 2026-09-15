@@ -2,24 +2,24 @@
 
 Here is a summary of the custom agents I will use to build Mona's Project Pulse dashboard.
 
-- Orchestrator
-  - target model: GPT-4
-  - responsibility: Orchestrate the workflow (전대진)
-  - location: .github/agents/orchestrator.md
+* **Orchestrator**
+  * Target model: gpt-4o
+  * Responsibility: Orchestrate the workflow (전대진)
+  * Location: .github/agents/orchestrator.md
 
-- Planner
-  - target model: GPT-4
-  - responsibility: Plan the project (오지윤)
-  - location: .github/agents/planner.md
+* **Planner**
+  * Target model: claude-3.5-sonnet
+  * Responsibility: Plan the project (오지윤)
+  * Location: .github/agents/planner.md
 
-- Coder
-  - target model: GitHub Copilot
-  - responsibility: Write code (신지윤)
-  - location: .github/agents/coder.md
+* **Coder**
+  * Target model: gpt-4
+  * Responsibility: Write code (신지윤)
+  * Location: .github/agents/coder.md
 
-- Designer
-  - target model: DALL-E 3
-  - responsibility: Design UI (백예원)
-  - location: .github/agents/designer.md
+* **Designer**
+  * Target model: gpt-4o
+  * Responsibility: Design UI (백예원)
+  * Location: .github/agents/designer.md
 
 Note: I am using GitHub Copilot CLI in a Codespace to orchestrate the work.
