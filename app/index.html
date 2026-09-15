@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Pulse</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="dashboard" aria-label="Project Pulse dashboard">
+      <header class="dashboard-header">
+        <p class="eyebrow">Contributor overview</p>
+        <h1>Project Pulse</h1>
+        <p class="dashboard-intro">
+          A quick snapshot of the team’s active projects, ownership, recent activity,
+          and current priorities.
+        </p>
+      </header>
+
+      <section class="project-section" aria-labelledby="project-list-title">
+        <div class="section-heading">
+          <h2 id="project-list-title">Live projects</h2>
+        </div>
+
+        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script>
+      async function loadProjects() {
+        const grid = document.getElementById('project-grid');
+
+        try {
+          const response = await fetch('./project-data.json');
+          if (!response.ok) {
+            throw new Error(`Failed to load project data (${response.status})`);
+          }
+
+          const data = await response.json();
+          const projects = Array.isArray(data.projects) ? data.projects : [];
+
+          if (projects.length === 0) {
+            grid.innerHTML = '<p class="empty-state">No projects available right now.</p>';
+            return;
+          }
+
+          grid.innerHTML = projects
+            .map(
+              (project) => `
+                <article class="project-card" aria-label="Project card for ${project.name}">
+                  <div class="card-topline">
+                    <div>
+                      <p class="project-label">Project</p>
+                      <h3>${project.name}</h3>
+                    </div>
+                    <span class="status-badge status-${project.status.toLowerCase().replace(/\s+/g, '-')}">${project.status}</span>
+                  </div>
+
+                  <dl class="project-meta">
+                    <div>
+                      <dt>Owner</dt>
+                      <dd>${project.owner}</dd>
+                    </div>
+                    <div>
+                      <dt>Recent activity</dt>
+                      <dd>${project.recentActivity}</dd>
+                    </div>
+                    <div>
+                      <dt>Priority</dt>
+                      <dd>${project.priority}</dd>
+                    </div>
+                  </dl>
+                </article>
+              `
+            )
+            .join('');
+        } catch (error) {
+          grid.innerHTML = `
+            <p class="empty-state error-state">
+              Unable to load project data. Please verify the JSON file and try again.
+            </p>
+          `;
+          console.error(error);
+        }
+      }
+
+      loadProjects();
+    </script>
+  </body>
+</html>

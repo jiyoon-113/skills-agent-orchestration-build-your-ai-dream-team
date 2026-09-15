@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Project Pulse Dashboard",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cd ${workspaceFolder}/app && python3 -m http.server 5500",
+      "serverReadyAction": {
+        "pattern": "Serving HTTP on .*",
+        "uriFormat": "http://localhost:%s/index.html",
+        "action": "openExternally"
+      }
+    }
+  ]
+}

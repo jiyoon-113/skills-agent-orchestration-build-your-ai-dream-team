@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "name": "Project Pulse",
+      "owner": "Mona",
+      "status": "On track",
+      "recentActivity": "Updated dashboard copy and confirmed launch flow.",
+      "priority": "High"
+    },
+    {
+      "name": "Docs Refresh",
+      "owner": "Avery",
+      "status": "Review",
+      "recentActivity": "Revised onboarding notes and clarified responsibilities.",
+      "priority": "Medium"
+    },
+    {
+      "name": "API Stability",
+      "owner": "Jules",
+      "status": "At risk",
+      "recentActivity": "Investigating intermittent timeout alerts from the staging environment.",
+      "priority": "High"
+    },
+    {
+      "name": "Automation Sprint",
+      "owner": "Priya",
+      "status": "Blocked",
+      "recentActivity": "Waiting on design sign-off before shipping the follow-up workflow.",
+      "priority": "Medium"
+    }
+  ]
+}
